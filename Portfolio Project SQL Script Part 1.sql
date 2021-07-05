@@ -1,8 +1,14 @@
 -- Select the Data we will be working with : 
-
+ 
+ /* First Table covid_deaths ( ) */ 
 select CONTINENT, LOCATION, POPULATION, DATE_SYS as Day, NEW_CASES, TOTAL_CASES, NEW_DEATHS, TOTAL_DEATHS
 from covid_deaths 
 order by 2,4 ;
+
+ /* Second Table covid_vaccination ( ) */ 
+select CONTINENT, LOCATION, DATE_SYS, NEW_TESTS, TOTAL_TESTS, TOTAL_VACCINATIONS, PEOPLE_FULLY_VACCINATED, NEW_VACCINATIONS
+from covid_vaccination
+;
 
 --------------- Working with locations  ---------------
 -- Looking at the death Percentage if someone contract the virus / day
