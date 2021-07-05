@@ -29,7 +29,7 @@ order by location, day ;
 
 -- Looking at the coutries with the highest infection Percentage 
 
-select CONTINENT, LOCATION,   max(POPULATION) as max_population, max(round((TOTAL_CASES/ POPULATION)*100,3)) as max_Infect_Percentage
+select CONTINENT, LOCATION,   max(POPULATION) as max_population, NVL(max(round((TOTAL_CASES/ POPULATION)*100,3)),0) as max_Infect_Percentage -- replace with 0 if null
 from covid_deaths
 --where upper(location) like '%TUNISIA%'
 where continent is not null 
