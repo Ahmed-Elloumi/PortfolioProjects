@@ -93,5 +93,26 @@ set owner_adress =  Trim(substr(OWNERADDRESS,1, instr(OWNERADDRESS,',',1)-1)) ,
     owner_city    =  Trim(substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,1)+1 , instr(substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,1)+1, length(OWNERADDRESS)),',')-1 )),
     owner_state    =  Trim(substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,2)+1, length(OWNERADDRESS)));
     
-    
-    
+
+----- Unify SOLDASVACANT column values ( Change N to No and Y to Yes )
+select distinct
+    soldasvacant,
+    count(soldasvacant) as nbr
+from
+    nashvillehousing
+group by
+    soldasvacant;
+-- Result
+--Y	    52
+--N	    399
+--No	51403
+--Yes	4623
+
+
+Update nashvillehousing
+set soldasvacant = Case soldasvacant
+    when 'Y' then 'Yes'
+    when 'N' then 'No'
+    else soldasvacant
+end;
+
