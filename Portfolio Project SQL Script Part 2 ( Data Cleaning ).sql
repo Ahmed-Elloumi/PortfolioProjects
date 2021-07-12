@@ -62,4 +62,36 @@ set Adresse =  Trim(substr(PROPERTYADDRESS, 1 , instr(PROPERTYADDRESS,',')-1)) ,
     City    =  Trim(substr(PROPERTYADDRESS, instr(PROPERTYADDRESS,',')+1, length(PROPERTYADDRESS)));
     
     
+
+---- Extracting all the informations from OWNERADDRESS column ( owner_adress, owner_city, owner_state ):
+    -- Example : " 1808  FOX CHASE DR, GOODLETTSVILLE, TN " --> Extract TN wich is always after the second comma
+select OWNERADDRESS, 
+trim(substr(OWNERADDRESS,1, instr(OWNERADDRESS,',',1)-1)) as owner_Adresse,
+substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,1)+1 /*start from the position of first comma*/, instr(substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,1)+1, length(OWNERADDRESS)),',')-1 /*go from 1st comma pos until the second one*/ ) as owner_city, 
+substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,2)+1, length(OWNERADDRESS)) as owner_state
+from nashvillehousing;
+
+
+--- Create 3 new  columns ( owner_adress, owner_city, owner_state )
+-- Add owner_adress Column
+Alter table nashvillehousing
+add owner_adress VARCHAR2(100);
+
+-- Add owner_city Column
+Alter table nashvillehousing
+add owner_city VARCHAR2(50);
+
+-- Add owner_state Column
+Alter table nashvillehousing
+add owner_state VARCHAR2(25);
+
+commit;
+
+--- Update te 3 new created columns 
+update nashvillehousing
+set owner_adress =  Trim(substr(OWNERADDRESS,1, instr(OWNERADDRESS,',',1)-1)) ,
+    owner_city    =  Trim(substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,1)+1 , instr(substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,1)+1, length(OWNERADDRESS)),',')-1 )),
+    owner_state    =  Trim(substr(OWNERADDRESS,instr(OWNERADDRESS,',',1,2)+1, length(OWNERADDRESS)));
+    
+    
     
