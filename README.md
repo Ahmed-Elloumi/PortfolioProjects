@@ -2,7 +2,7 @@
   
 <h3>A Data Analyst Project. </h3>
 
-<b><h4> For Data Exploration </h4> </b> we used the covid-deaths dataset : https://ourworldindata.org/covid-deaths .
+<b><h4> For Data Exploration : </h4> </b> we used the covid-deaths dataset : https://ourworldindata.org/covid-deaths .
 
   <p>This Dataset was then imported to oracle 11g database under two separate tables : Covid_Deaths & Covid_Vaccination. </p>
   
