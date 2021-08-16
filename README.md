@@ -10,3 +10,6 @@
 
 
 <b><h4> For Data Cleaning : </h4>  </b> we used the Nashville Housing dataset : https://github.com/AlexTheAnalyst/PortfolioProjects/blob/main/Nashville%20Housing%20Data%20for%20Data%20Cleaning.xlsx
+
+
+<b><h4> Data Correlation : </h4>  </b> Movies correlations project.ipyn
